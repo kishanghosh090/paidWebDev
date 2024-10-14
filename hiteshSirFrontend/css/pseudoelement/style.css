@@ -1,0 +1,162 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body {
+  padding: 10px;
+  background-color: #1a1a1a;
+  color: white;
+}
+
+.navigation-container1 {
+  margin-bottom: 40px;
+  border: 2px solid red;
+  padding: 10px;
+  margin: 20px;
+}
+
+.navigation-container2 {
+  margin-bottom: 40px;
+  border: 2px solid red;
+  padding: 10px;
+  margin: 20px;
+}
+
+.navigation-container3 {
+  margin-bottom: 40px;
+  border: 2px solid red;
+  padding: 10px;
+  margin: 20px;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.navigation-container1 ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+.navigation-container1 ul li {
+  display: inline;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.navigation-container1 ul li button {
+  background-color: orange;
+  border: none;
+  padding: 5px 15px;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+/* .navigation-container1 ul li::after{
+
+} */
+.navigation-container1 ul li {
+  position: relative;
+}
+
+.navigation-container1 ul li::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background-color: #0a65c7;
+  transform: scaleX(0);
+  transition: all 0.23s ease-in-out;
+}
+
+.navigation-container1 ul li:hover::after {
+  transform: scaleX(1);
+}
+
+
+
+.navigation-container2 {
+  background-color: #262427;
+  width: 300px;
+  padding: 20px;
+
+}
+
+.navigation-container2 ul li {
+  margin-bottom: 12px;
+}
+
+.navigation-container2 ul li a {
+  text-decoration: none;
+  color: #fff;
+  padding: 10px;
+  width: 100%;
+  display: block;
+}
+
+.navigation-container2 ul li a:hover {
+  background-color: rgb(36, 5, 33);
+}
+
+.navigation-container2 ul li button {
+  background-color: rgb(36, 5, 33);
+  color: #fff;
+  padding: 9px;
+  border: none;
+  width: 100%;
+  border-radius: 12px;
+
+}
+
+.navigation-container2 ul li button:hover {
+  background-color: rgb(57, 8, 52);
+
+}
+
+
+.navigation-container3 {
+  background-color: rgb(53, 166, 153);
+  padding: 10px;
+}
+
+.navigation-container3 ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navigation-container3 ul li a {
+  text-decoration: none;
+  color: #fff;
+  display: block;
+
+}
+
+.navigation-container3 ul li .dropdown-content {
+  display: none;
+  transition: all 0.7s ease-out;
+}
+
+.navigation-container3 ul li .dropdown .dropdown-content {
+  transition: all 0.7s ease-in-out;
+}
+
+.navigation-container3 .dropdown:hover .dropdown-content {
+  display: block;
+  position: absolute;
+  bottom: -1;
+  height: 10rem;
+  width: 8rem;
+  background-color: #1a0909;
+  padding: 20px;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  transition: all 0.2s ease-in-out;
+
+
+}

@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* <!-- universal selector -->
+
+<!-- type selector  -->
+<!-- id selector -->
+<!-- attribute selector -->
+<!-- child selector -->
+    <!-- descendant selector -->
+    <!-- adjacent sibling selector -->
+    <!-- GENERAL SIBLING selector -->
+    <!-- pseudo-class selector -->
+    <!-- grouping selectro --> */
+body {
+  background-color: #212121;
+}
+
+/* input[tpe="text"] {
+        border: y10px solid #21a2c9;
+        } */
+
+article p {
+  color: #fff;
+}
+ul > li {
+  color: blueviolet;
+}
