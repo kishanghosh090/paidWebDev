@@ -4,8 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const weatherInfo = document.getElementById('weather-info');
     const cityName = document.getElementById('city-name');
     const temperature = document.getElementById('temperature');
+    const feelsLike = document.getElementById('feelsLike');
     const description = document.getElementById('description');
     const errorMessage = document.getElementById('error-message');
+
     const API_KEY = 'd2d7d932933ef6fdea6d7c280218dcde';
 
     // gwt weather data
@@ -32,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
             throw new Error('Network response was not ok');
         }
         const data = await response.json();
+        console.log(data);
         return data
     }
     function displayWeatherData(data) {
@@ -41,11 +44,12 @@ document.addEventListener('DOMContentLoaded', () => {
             main,
             weather
         } = data
-        cityName.innerText = name;
-        temperature.innerText = `${main.temp}°C`;
-        description.innerText = weather[0].description
-
+        cityName.textContent = `${name}`;
+        temperature.textContent = `Temperature : ${main.temp}°C`;
+        feelsLike.textContent = `Feels Like : ${main.feels_like}°C`;
+        description.textContent = weather[0].description;
         weatherInfo.classList.remove('hidden');
+        weatherInfo.classList.add('weather-info');
 
     }
     function showError() {

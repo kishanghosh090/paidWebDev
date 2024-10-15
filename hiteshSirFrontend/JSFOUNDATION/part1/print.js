@@ -1,2 +1,2 @@
-process.stdout.write("kishan");
+process.stdout.write("kishan \n");
 console.table({ city: "malda" });
