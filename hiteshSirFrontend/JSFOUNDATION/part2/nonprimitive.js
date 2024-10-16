@@ -1,14 +1,17 @@
-const username = {
-    "first Name": "kishan",
-    lastName: "ghosh",
-    isLoggedIn: true,
-}
-console.log(typeof (username["firstName"]))
-console.log(username.lastName);
 
-let today = new Date()
+// const username = {
+//     "first Name": "kishan",
+//     lastName: "ghosh",
+//     isLoggedIn: true,
+// }
+// console.log(typeof (username["first Name"]))
+// console.log(username.lastName);
 
-console.log(today.toLocaleString())
+// let today = new Date().toLocaleString()
+
+// console.log(today)
+
+// Arrays
 
 let heros = ["thor", "b", "c", true, 12, 2121212.12]
-console.log(heros)
+console.log(heros[1])
