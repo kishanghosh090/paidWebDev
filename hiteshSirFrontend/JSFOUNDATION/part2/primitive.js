@@ -33,13 +33,12 @@
 //   console.log(sm1);
 // }else{
 //     console.log("not same");
-    
-// }
 
+// }
 
 /// string
 
-const game = new String('   kishan')
+const game = new String("   kishan");
 // console.log(game.__proto__)
 // game[0] = 'a'
 // console.log(game[0], game[1], game[2]);
@@ -55,7 +54,6 @@ const game = new String('   kishan')
 
 // console.log(game,game.trim());
 
-
 // const URL = 'https://kishanranaghosh.onrender.com'
 // console.log(URL.replace(".", "_"))
 // console.log(URL.replaceAll(".", "_"));
@@ -64,12 +62,23 @@ const game = new String('   kishan')
 // const SPLIT = URL.split(".")
 // console.log(SPLIT,URL)
 
-
 // NUMBERS ---->
 
-const numbers = new Number(12389)
-const otherNumber = 122.523
-console.log(numbers.toFixed(2));
-console.log(otherNumber.toPrecision(5));// left to right ---->
+const numbers = new Number(-1238935);
+const otherNumber = 122.423;
+// console.log(numbers.toFixed(2));
+// console.log(otherNumber.toPrecision(5)); // left to right ---->
+// console.log(numbers.toLocaleString("en-in"));
 
+// console.table([
+//   Math.abs(numbers),
+//   Math.round(otherNumber),
+//   Math.ceil(otherNumber),
+//   Math.floor(otherNumber),
+// ]);
+
+
+let Random = Math.random()
+
+// console.log(Random);
 
