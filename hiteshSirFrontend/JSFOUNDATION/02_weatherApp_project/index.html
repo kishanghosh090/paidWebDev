@@ -1,29 +1,40 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>weather app</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <h1>Weather App</h1>
-        <div class="input-container">
-            <input type="text" id="city-input" placeholder="Enter city name">
-            <button id="get-weather-btn">Get Weather</button>
-        </div>
-        <div id="weather-info" class="hidden">
-            <h2 id="city-name"></h2>
-            <p id="temperature"></p>
-            <p id="feelsLike"></p>
-            <p id="description"></p>
-        </div>
-        <div id="error-message" class="hidden">City not found. please try again</div>
+      <h1>
+        Weather App
+        <span class="hidden loader"
+          ><img src="./Spinner@1x-1.0s-200px-200px.gif" alt=""
+        /></span>
+      </h1>
+      <div class="input-container">
+        <input type="text" id="city-input" placeholder="Enter city name" />
+        <button id="get-weather-btn">Get Weather</button>
+      </div>
+      <div id="weather-info" class="hidden">
+        <h2 id="city-name"></h2>
+        <p id="temperature"></p>
+        <p id="feelsLike"></p>
+        <p id="description"></p>
+      </div>
+      <div id="error-message" class="hidden">
+        City not found. please try again
+      </div>
     </div>
-</body>
-<script src="./script.js"></script>
-
+    <div id="history-container-main">
+      <h2>History</h2>
+      <!-- <div class="history-container"></div> -->
+    </div>
+  </body>
+  <script src="./script.js"></script>
 </html>
