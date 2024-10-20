@@ -1,0 +1,32 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Qize App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Qize App</h1>
+      <div id="quize-container" class="hidden">
+        <div id="question-container">
+          <h2 id="question-text"></h2>
+          <ul id="choices-list">
+            <!-- choices will be added dynamically here -->
+          </ul>
+          <button class="hidden" id="next-btn">Next Question</button>
+        </div>
+      </div>
+      <div id="result-container" class="hidden">
+        <h2>Your Score:</h2>
+        <p id="score"></p>
+        <button id="restart-btn">Restart Qize</button>
+      </div>
+      <button id="start-btn">Start Qize</button>
+    </div>
+  </body>
+  <script src="./script.js"></script>
+</html>
