@@ -1,8 +1,8 @@
 import express from "express";
-
+import "dotenv/config";
 const app = express();
-
-const PORT = 8081;
+// console.log(process.env)
+const PORT = process.env.PORT || 3000;
 
 // app.get("/", (req, res) => {
 //   res.send("hello from akash where is tea(alychi)");
@@ -13,6 +13,7 @@ const PORT = 8081;
 
 app.use(express.json());
 
+// variables
 let teaData = [];
 let nextId = 1;
 // aadd a new tea
