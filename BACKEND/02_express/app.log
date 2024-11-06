@@ -1,0 +1,9 @@
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/teas\",\"status\":\"201\",\"responseTime\":\"9.027\"}","timestamp":"2024-11-05T19:03:51.770Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/teas\",\"status\":\"201\",\"responseTime\":\"2.565\"}","timestamp":"2024-11-05T19:05:31.066Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"A post request is made","timestamp":"2024-11-05T19:06:39.859Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/teas\",\"status\":\"201\",\"responseTime\":\"31.043\"}","timestamp":"2024-11-05T19:06:39.872Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"A post request is made","timestamp":"2024-11-05T19:07:10.314Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"This is an info message","timestamp":"2024-11-05T19:07:10.316Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"This is an error message","timestamp":"2024-11-05T19:07:10.316Z"}
+{"level":"\u001b[33mwarn\u001b[39m","message":"This is a warning message","timestamp":"2024-11-05T19:07:10.317Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/teas\",\"status\":\"201\",\"responseTime\":\"18.392\"}","timestamp":"2024-11-05T19:07:10.324Z"}
