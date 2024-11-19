@@ -2,11 +2,13 @@ const fs = require("node:fs");
 const os = require("node:os");
 
 const EventEmitter = require("events");
-// console.log(typeof fs, typeof EventEmitter);
+
+console.log(os.userInfo());
+console.log(os.arch());
 
 class Logger extends EventEmitter {
   log(message) {
-    this.emit("message", {message});
+    this.emit("message", { message });
   }
 }
 
@@ -21,7 +23,7 @@ const logToFile = (event) => {
 
 logger.on("message", logToFile);
 
-setInterval(() => {
-  const memoryUses = (os.freemem() / os.totalmem()) * 100;
-  logger.log(memoryUses.toFixed(2));
-}, 2000);
+// setInterval(() => {
+//   const memoryUses = (os.freemem() / os.totalmem()) * 100;
+//   logger.log(memoryUses.toFixed(2));
+// }, 2000);

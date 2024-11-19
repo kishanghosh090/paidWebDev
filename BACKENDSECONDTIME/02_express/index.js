@@ -1,26 +1,58 @@
 import express from "express";
 const app = express();
-const PORT = 3000;
+
+const PORT = process.env.PORT || 4001;
 app.use(express.json());
 
 let teaData = [];
-let nextId = 1;
+let nexId = 1;
 
+// add a new tea
 app.post("/teas", (req, res) => {
   const { name, price } = req.body;
-  const newTea = {
-    id: nextId++,
-    name,
-    price,
-  };
+  const newTea = { id: nexId++, name, price };
   teaData.push(newTea);
-  res.status(201).json(newTea);
+  //   console.log(teaData);
+  res.status(201).send(newTea);
 });
-app.get("/teas", (req, res) => {
-  res.json(teaData);
-})
 
-//-----------port listening------------
+// get all tea
+app.get("/teas", (req, res) => {
+  res.status(201).send(teaData);
+});
+
+// get a tea with id
+app.get("/teas/:id", (req, res) => {
+  const myTea = teaData.find((tea) => tea.id === parseInt(req.params.id));
+  if (!myTea) {
+    return res.status(404).send("not found");
+  }
+  res.status(404).send(myTea);
+});
+
+// update tea
+app.put("/teas/:id", (req, res) => {
+  const myTea = teaData.find((tea) => tea.id === parseInt(req.params.id));
+  if (!myTea) {
+    return res.status(404).send("not found");
+  }
+  const { name, price } = req.body;
+  myTea.name = name;
+  myTea.price = price;
+  res.send(200).send(myTea);
+});
+
+// delete tea
+
+app.delete("/tea/:id", (req, res) => {
+  const index = teaData.findIndex((t) => t.id === parseInt(req.params.id));
+  if (index === -1) {
+    return res.status(404).send("tea not found");
+  }
+  teaData.splice(index, 1);
+  res.status(201).send("deleted");
+});
+
 app.listen(PORT, () => {
-  console.log(`server is listning at PORT: ${PORT}`);
+  console.log(`App is listning at PORT: ${PORT}...`);
 });
