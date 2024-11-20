@@ -1,9 +1,13 @@
 import express from "express";
+import dotenv from "dotenv";
 const app = express();
 
 const PORT = process.env.PORT || 4001;
 app.use(express.json());
-
+// config dotenv------
+dotenv.config({
+  path: "./.env",
+});
 let teaData = [];
 let nexId = 1;
 
