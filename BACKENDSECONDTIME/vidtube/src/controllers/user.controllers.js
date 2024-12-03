@@ -174,4 +174,98 @@ const logoutUser = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, "User logged out successfully"));
 });
 
+const chageCurrentPassword = asyncHandler(async (req, res) => {
+  const { oldPassword, newPassword } = req.body;
+  const user = await User.findById(req.user._id);
+
+  const isPasswordCorrect = await user.isPasswordCorrect(oldPassword);
+
+  if (!isPasswordCorrect) {
+    throw new ApiError(401, "Password is incorrect");
+  }
+
+  user.password = newPassword;
+  await user.save({ validateBeforeSave: false });
+  return res
+    .status(200)
+    .json(new ApiResponse(200, "Password changed successfully"));
+});
+const getCurrentUser = asyncHandler(async (req, res) => {
+  return res.status(200).json(new ApiResponse(200, "User found", req.user));
+});
+const updateAccountDetails = asyncHandler(async (req, res) => {
+  const { fullname, email } = req.body;
+  if (!fullname || !email) {
+    throw new ApiError(400, "All fields are required");
+  }
+
+  const user = User.findByIdAndUpdate(
+    req.user._id,
+    {
+      $set: { fullname, email },
+    },
+    { new: true }
+  ).select("-password -refreshToken");
+  return res
+    .status(200)
+    .json(new ApiResponse(200, "Account details updated successfully"));
+});
+const updateUserAvatar = asyncHandler(async (req, res) => {
+  const avatarLocalPath = req.files?.path;
+  if (!avatarLocalPath) {
+    throw new ApiError(400, "Avatar is required");
+  }
+  const avatar = await uploadOnCloudinary(avatarLocalPath);
+  const user = await User.findByIdAndUpdate(
+    req.user._id,
+    {
+      $set: { avatar: avatar.url },
+    },
+    { new: true }
+  ).select("-password -refreshToken");
+  return res.json(
+    new ApiResponse(200, { user }, "Avatar updated successfully")
+  );
+});
+const updateUserCoverImage = asyncHandler(async (req, res) => {
+  const coverImageLocalPath = req.files?.path;
+  if (!coverImageLocalPath) {
+    throw new ApiError(400, "Cover image is required");
+  }
+  const coverImage = await uploadOnCloudinary(coverImageLocalPath);
+  const user = await User.findByIdAndUpdate(
+    req.user._id,
+    {
+      $set: { coverImage: coverImage.url },
+    },
+    { new: true }
+  ).select("-password -refreshToken");
+  return res.json(
+    new ApiResponse(200, { user }, "Cover image updated successfully")
+  );
+});
+
+const getUserChannelProfile = asyncHandler(async (req, res) => {
+  const { username } = req.params;
+  if (!username) {
+    throw new ApiError(400, "Username is required");
+  }
+  const channel = await User.aggregate([
+    {
+      $match: {
+        username: username?.toLowerCase(),
+      },
+    },
+    {
+      $lookup: {
+        from: "subscriptions",
+        localField: "_id",
+        foreignField: "channel",
+        as: "subscribers",
+      },
+    },
+  ]);
+});
+const getWatchHistory = asyncHandler(async (req, res) => {});
+
 export { registerUser, loginUser, refreshAccessToken, logoutUser };
