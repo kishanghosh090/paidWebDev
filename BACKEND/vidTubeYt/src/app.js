@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+
 const app = express();
 
 app.use(
@@ -9,12 +10,20 @@ app.use(
     credentials: true,
   })
 );
-//json configuration from frontend form data
-app.use(express.json({ limit: "16kb" }));
-//url configuration
-app.use(express.urlencoded({ extended: true, limit: "16kb" }));
+
+// Middleware for parsing JSON and URL-encoded data
+app.use(express.json());
+
+app.use(express.urlencoded({ extended: true }));
+
+// Serve static files
 app.use(express.static("public"));
-//cookie parser for cookies operations--
+
+// Middleware for parsing cookies
 app.use(cookieParser());
+
+// Import and use routes
+import userRouter from "./routes/user.routes.js";
+app.use("/api/v1/users", userRouter);
 
 export { app };
