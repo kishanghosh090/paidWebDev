@@ -103,7 +103,7 @@ const loginUser = asyncHandler(async (req, res) => {
 
   const { email, password } = req.body;
 
-  if (!email && !password) {
+  if (!(email && password)) {
     throw new ApiError(400, "email and password are required");
   }
 
@@ -167,6 +167,7 @@ const logoutUser = asyncHandler(async (req, res) => {
   return res
     .status(200)
     .clearCookie("accessToken", cookieOptions)
+    .clearCookie("refreshToken", cookieOptions)
     .json(new ApiResponse(200, null, "user logged out successfully"));
 });
 
