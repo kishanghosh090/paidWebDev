@@ -426,5 +426,6 @@ export {
   getCurrentUser,
   updateAccountDetails,
   getUserProfile,
+  updateAvatar,
   getWatchHistory,
 };
