@@ -1,13 +1,39 @@
 import "./App.css";
-
 import React, { useState } from "react";
 
 const App = () => {
-  const [a, setA] = useState(10)
+  const [userName, setuserName] = useState("");
+  const [password, setpassword] = useState("");
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+  });
+  const submitHandler = (e) => {
+    console.log(JSON.stringify(formData));
+    e.preventDefault();
+  };
   return (
     <div>
-      <h1>hello {a}</h1>
-      <button onClick={() => setA(a + 1)}>chane a</button>
+      <form onSubmit={submitHandler}>
+        <input
+          value={userName}
+          onChange={(e) => {
+            setuserName(e.target.value);
+            setFormData({ ...formData, username: e.target.value });
+          }}
+          type="text"
+          name="username"
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => {
+            setpassword(e.target.value);
+            setFormData({ ...formData, password: e.target.value });
+          }}
+        />
+        <button type="submit">Submit</button>
+      </form>
     </div>
   );
 };
