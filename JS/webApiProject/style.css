@@ -1,0 +1,123 @@
+body {
+    background-color: rgb(0, 0, 0);
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    margin-top: 50px;
+    padding: 20px;
+
+}
+
+input {
+    width: 400px;
+    height: 30px;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+#input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#get-weather-btn {
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    background-color: rgb(0, 0, 0);
+    color: white;
+
+    transition: all 0.3s ease-in-out;
+}
+
+#get-weather-btn:hover {
+    background-color: white;
+    color: black;
+}
+
+#weather-info {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #212121;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+#todo-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+
+    border-radius: 5px;
+    background-color: #333;
+}
+
+.delete-btn {
+    margin-left: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    font-size: 20px;
+    background: red;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    padding: 10px;
+}
+
+.delete-btn:hover {
+    background-color: white;
+    color: #000;
+}
+
+.completed {
+    background-color: green;
+}
+
+.hidden {
+    display: none
+}
+
+/* write code for responsiveness */
+@media(max-width: 600px) {
+    body {
+        font-size: 20px;
+    }
+
+    input {
+        width: 200px;
+        height: 20px;
+        font-size: 15px;
+    }
+
+    #add-task-btn {
+        font-size: 15px;
+    }
+
+    #todo-list li {
+        font-size: 15px;
+    }
+
+    .delete-btn {
+        font-size: 15px;
+    }
+}

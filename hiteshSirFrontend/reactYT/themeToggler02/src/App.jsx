@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { ThemeProvider, useTheme } from "./context/theme";
+import { ThemeProvider } from "./context/theme";
 
 function App() {
   const [themeMode, setThemeMode] = useState("light");

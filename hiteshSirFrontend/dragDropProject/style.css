@@ -1,0 +1,24 @@
+body{
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    align-items: center;
+    height: 100vh;
+}
+.whitebox{
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    margin: 10px;
+    border: 1px solid black;
+}
+
+.imgBox{
+    background-image: url(images.jpeg);
+    background-size: cover;
+    height: 100%;
+}
+
+.hold{
+    border: 3px solid red;
+}
