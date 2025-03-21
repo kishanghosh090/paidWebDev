@@ -28,3 +28,16 @@ function Tea(type) {
     return `congo for purchsing ${this.type}`;
   };
 }
+
+Tea.prototype.color = function () {
+  return `Your tea's color is black and brown ${this.type} `;
+};
+let tea = new Tea("alychi");
+console.log(tea.color());
+
+function Drink(params) {
+  if (!new.target) {
+    throw new Error("must be called with new");
+  }
+  this.type = params;
+}
