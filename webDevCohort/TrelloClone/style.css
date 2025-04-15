@@ -50,6 +50,9 @@ body {
   transition: background-color 0.2s;
   scrollbar-width: thin;
   scrollbar-color: #1cc05e #333333;
+  transition: all 1s;
+  border: 1px solid #333;
+  border-radius: 5px;
 }
 .card {
   background-color: #555;
