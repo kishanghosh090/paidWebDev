@@ -20,9 +20,8 @@ function createTaskElement(taskText) {
 
     taskElement.addEventListener("dragstart", function (e) {
         this.classList.add("dragging");
-
+        console.log(e.target);
         draggedCard = this;
-
     }
     );
 
@@ -40,10 +39,10 @@ columns.forEach((column) => {
 });
 
 function dragover(e) {
-    console.log(e);
+    // console.log(e);
 
     e.preventDefault();
-    console.log(draggedCard);
+    // console.log(draggedCard);
 
     this.appendChild(draggedCard);
 
