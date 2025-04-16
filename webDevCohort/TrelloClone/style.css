@@ -101,3 +101,38 @@ body {
   cursor: pointer;
   transition: background-color 0.2s;
 }
+
+.contextMenu {
+  position: absolute;
+  background-color: #333;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  display: none;
+}
+.contextMenu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.contextMenu ul li {
+  padding: 5px 10px;
+  cursor: pointer;
+  color: #fff;
+  transition: background-color 0.2s;
+  border-radius: 5px;
+  margin: 5px 0;
+}
+.contextMenu ul li:hover {
+  background-color: #444;
+}
+.contextMenu ul li:active {
+  background-color: #555;
+}
+.contextMenu ul li:focus {
+  background-color: #666;
+}
+/* 
+.dragging {
+  display: hidden;
+} */

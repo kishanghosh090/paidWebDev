@@ -20,7 +20,7 @@ function createTaskElement(taskText) {
 
     taskElement.addEventListener("dragstart", function (e) {
         this.classList.add("dragging");
-        console.log(e.target);
+        // console.log(e.target);
         draggedCard = this;
     }
     );
@@ -28,6 +28,11 @@ function createTaskElement(taskText) {
     taskElement.addEventListener("dragend", function (e) {
         this.classList.remove("dragging");
     });
+
+    taskElement.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+        showContextMenu(e);
+    })
 
 
     return taskElement;
@@ -48,3 +53,59 @@ function dragover(e) {
 
     // this.appendChild(dragCard);
 }
+
+function showContextMenu(e) {
+    let menu = document.querySelector(".contextMenu")
+    menu.style.display = "block";
+    menu.style.left = `${e.pageX}px`;
+    menu.style.top = `${e.pageY}px`;
+    menu.style.position = "absolute";
+    menu.style.zIndex = 1000;
+
+    const edit = document.querySelector(".edit");
+    const deleteBtn = document.querySelector(".delete");
+
+    edit.addEventListener("click", function (event) {
+
+
+        // aleart input
+        let input = prompt(`Edit task `);
+
+
+        // console.log(input);
+
+        if (input === null || input === e.target.innerText || input === "") {
+            // close prompt
+            alert("Please enter a valid task.");
+            input = null;
+            return;
+        }
+        if (input) {
+            e.target.innerHTML = `${input} <span>${new Date().toLocaleString()}</span>`;
+            // close prompt
+            alert("Task updated successfully.");
+            input = null;
+            return
+        }
+        return
+    })
+    deleteBtn.addEventListener("click", function () {
+        e.target.remove();
+        // confirm delete
+
+    })
+
+}
+
+
+function hideContextMenu() {
+    let menu = document.querySelector(".contextMenu")
+    menu.style.display = "none";
+}
+document.addEventListener("click", function (e) {
+    // console.log(e.target.closest(".contextMenu"));
+    if (true) {
+        hideContextMenu();
+    }
+}
+);
