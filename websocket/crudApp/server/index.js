@@ -15,8 +15,14 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     console.log("user disconnected");
   });
+  socket.on("data", (data) => {
+    // console.log(data);
+    crudData.push(data);
+    console.log(crudData);
+    socket.emit("data", crudData);
+  });
 });
 
 httpServer.listen(4000, () => {
-  console.log("listening on *:3000");
+  console.log("listening on *:4000");
 });
