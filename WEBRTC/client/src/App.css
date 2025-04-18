@@ -1,0 +1,21 @@
+.homepage-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+.homepage-container .input-container input {
+  font-size: 24px;
+  display: block;
+
+}
+.homepage-container .input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid black;
+}
