@@ -1,7 +1,7 @@
 import { User } from "../models/user.model.js"
 import crypto from "crypto"
 import nodemailer from "nodemailer"
-import { text } from "stream/consumers"
+import jwt from "jsonwebtoken"
 
 const register = async (req, res) => {
     try {
@@ -62,6 +62,80 @@ const register = async (req, res) => {
 
 }
 
-const login = async (req, res) => { }
+const verifyUser = async (req, res) => {
+    const { verifyToken } = req.params
 
-export { register, login }
+    if (!verifyToken) {
+        return res.status(400).json({
+            message: "Invalid Token"
+        })
+    }
+
+    const user = await User.findOne({ verificationToken: verifyToken })
+
+    if (!user) {
+        return res.status(400).json({
+            message: "Invalid Token"
+        })
+    }
+
+    user.isVerified = true
+    user.verificationToken = undefined
+
+    await user.save()
+
+    return res.status(200).json({
+        message: "User verified successfully"
+    })
+
+
+}
+
+const login = async (req, res) => {
+    const { email, password } = req.body
+
+    if (!email || !password) {
+        return res.status(400).json({
+            message: "All fields are required"
+        })
+    }
+
+    const user = await User.findOne({ email })
+
+    if (!user) {
+        return res.status(400).json({
+            message: "User not found"
+        })
+    }
+
+    if (!user.isVerified) {
+        return res.status(400).json({
+            message: "User not verified"
+        })
+    }
+
+    const isMatch = await user.comparePassword(password)
+
+    if (!isMatch) {
+        return res.status(400).json({
+            message: "Invalid credentials"
+        })
+    }
+
+    const token = await jwt.sign({ id: user._id }, "shhh", { expiresIn: "30d" })
+
+    res.cookie("token", token, {
+        httpOnly: true,
+        maxAge: 1000 * 60 * 60 * 24 * 30,
+        sameSite: "none",
+        secure: true
+    })
+    return res.status(200).json({
+        message: "User logged in successfully",
+        user,
+        token
+    })
+
+}
+
+export { register, verifyUser, login }

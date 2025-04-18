@@ -2,7 +2,7 @@ import express from "express"
 import "dotenv/config"
 import cors from "cors"
 import connectDB from "./utils/db.js"
-
+import cookieParser from "cookie-parser"
 
 const app = express()
 // console.log(app);
@@ -18,7 +18,7 @@ app.use(cors({
 
 app.use(express.json({ limit: "50mb" }))
 app.use(express.urlencoded({ limit: "50mb", extended: true }))
-
+app.use(cookieParser())
 const PORT = process.env.PORT || 4000;
 
 // app.get("/", (req, res, next) => {
@@ -32,7 +32,8 @@ const PORT = process.env.PORT || 4000;
 
 import userRoute from "./routes/user.route.js"
 
-app.use("/api/v1/users",userRoute)
+
+app.use("/api/v1/users", userRoute)
 
 
 // app.use((req, res) => {
