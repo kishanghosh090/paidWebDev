@@ -21,5 +21,6 @@
 
 
 # Basic of OS ---------------------------
-
+## how to see core in nodejs
+- os.availableParallelism()
 
