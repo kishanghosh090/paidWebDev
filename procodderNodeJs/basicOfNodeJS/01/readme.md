@@ -18,3 +18,8 @@
 # alias example in .zshrc file
 
 - alias source="source ~/.zshrc" --> using this alias-> we need to user only  --- command source
+
+
+# Basic of OS ---------------------------
+
+
