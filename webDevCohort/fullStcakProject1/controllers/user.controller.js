@@ -138,4 +138,54 @@ const login = async (req, res) => {
 
 }
 
-export { register, verifyUser, login }
+const getMe = async (req, res) => {
+    try {
+
+        const userId = req.user
+        if (!userId) {
+            return res.status(400).json({
+                message: "User not found"
+            })
+        }
+
+        const user = await User.findById(userId).select("-password -__v -isVerified -verificationToken -reserPasswordToken -reserPasswordExpires")
+
+        if (!user) {
+            return res.status(400).json({
+                message: "User not found"
+            })
+        }
+
+        return res.status(200).json({
+            message: "User fetched successfully",
+            user
+        })
+
+
+    } catch (error) {
+        return res.status(500).json({
+            message: `ERROR:::::::::::::${error.message}`
+        })
+    }
+}
+
+const logoutUser = async (req, res) => {
+    if (!req.user) {
+        return res.status(200).json({
+            message: "Unauthorized user"
+        })
+    }
+    res.cookie("token", null, {
+        expires: new Date(0)
+    })
+    return res.status(200).json({
+        message: "User logged out successfully"
+    })
+}
+
+
+const forgetPassword = async (req, res) => { }
+
+const resetPassword = async (req, res) => { }
+
+export { register, verifyUser, login, getMe, logoutUser, forgetPassword, resetPassword }
