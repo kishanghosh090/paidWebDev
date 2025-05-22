@@ -1,0 +1,74 @@
+.landingPageContainer {
+  width: 100vw;
+  height: 100vh;
+  background: #212121;
+  color: #fff;
+  overflow: hidden;
+}
+.landingPageContainer nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.landingPageContainer .navHeader {
+  padding-inline: 1.2rem;
+  padding-block: 1.6rem;
+}
+
+.landingPageContainer .navHeader h2 {
+  font-size: 1.2rem;
+  font-weight: 200;
+}
+.landingPageContainer .navList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2;
+  padding-inline: 1.2rem;
+  padding-block: 1.6rem;
+}
+.landingPageContainer .navList p {
+  cursor: pointer;
+  margin-right: 12px;
+}
+.landingPageContainer .navList button {
+  background: #2a2a2a;
+  color: white;
+  padding: 13px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.landingPageContainer .navList button:hover {
+  background: #000;
+}
+
+.landingPageContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+  flex-direction: column;
+  gap: 2rem;
+}
+.landingPageContent button {
+  background: #e86017;
+  color: white;
+  padding: 13px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.landingPageContent button:hover {
+  background: #000;
+}
+
+.landingPageContent h1 {
+  font-size: 3rem;
+  font-weight: 100;
+}
+.landingPageContent h1 span {
+  font-weight: 600;
+  color: #e86017;
+}
