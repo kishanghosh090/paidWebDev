@@ -1,5 +1,6 @@
 import React from "react";
 import "../App.css";
+import { Link } from "react-router-dom";  
 function Landing() {
   return (
     <div className="landingPageContainer">
@@ -17,7 +18,9 @@ function Landing() {
         <h1>
           Video <span>Conferencing</span>
         </h1>
-        <button>Get Started</button>
+        <button>
+          <Link to={"/auth"}>Get Started</Link>
+        </button>
       </div>
     </div>
   );
