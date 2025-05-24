@@ -25,14 +25,38 @@ app.use(cors({
 io.on("connection", (socket) => {
     console.log(`user connected ${socket.id}`);
 
+
+
     // socket.emit("welcome", `hello `)
 
     // socket broadcast --> user connected
     // socket.broadcast.emit("welcome", ` ${socket.id} joined the server`)
 
-    socket.on("message", (data) => {
+    socket.on("message", async (data) => {
         console.log(data);
-        socket.broadcast.emit("message", data)
+        // io.emit("message", data) // send to all users whih connected to the server
+        // Sends to: All connected clients, including the sender.
+        // Use case: Global announcements like "Server will restart in 5 minutes"
+
+        // socket.emit("message", data) // send to the sender
+
+        // Sends to: Only the client that triggered the current socket.
+        // Use case: Sending a message just to the sender(e.g., an acknowledgment or private info).
+
+
+        // socket.broadcast.emit("message", data) // send to all users except the sender
+        // Sends to: 🌍 All clients except the sender.
+        // Example use case: Notify others that a user has sent a message or joined the room.
+
+
+        // ------------------------
+
+        // socket.broadcast.emit("recive-message", data)
+
+        // room in socket
+
+        socket.to(data.room).emit("recive-message", data.text)
+
     })
 
     // socket disconnect --> user disconnected
