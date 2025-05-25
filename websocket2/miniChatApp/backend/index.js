@@ -26,12 +26,23 @@ io.on("connection", (socket) => {
 
     socket.on("join", (data) => {
         users[data] = socket.id
+
+        io.emit("users", Object.keys(users))
+
         console.log(users);
     })
 
     socket.on("isOnline", (data) => {
-        if (users[data]) {
-
+        if (users[data.toPhone]) {
+            const isRoomExists = Object.keys(rooms).find((key) => {
+                return rooms[key].includes(users[data.toPhone]) || rooms[key].includes(users[data.userPhone])
+            })
+            if (isRoomExists) {
+                socket.join(isRoomExists)
+            } else {
+                socket.join(socket.id)
+                rooms[socket.id] = [users[data.userPhone], users[data.toPhone]]
+            }
             socket.emit("online", true)
         } else {
             socket.emit("online", false)

@@ -17,13 +17,19 @@ function App() {
   const [toPhone, setToPhone] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
+  const [users, setUsers] = useState([]);
+  const [isChatBoxOpen, setIsChatBoxOpen] = useState(false);
   useEffect(() => {
     socket.on("connect", () => {
       console.log(socket.id);
     });
+    socket.on("users", (data) => {
+      setUsers(data);
+    });
     socket.on("online", (data) => {
       if (data) {
-        toast.success("Your Friend Is Online now you can chat");
+        toast.success("Your Friend Is Online. wait until Your Friend Join");
+        setIsChatBoxOpen(true);
       } else {
         toast.error("Your Friend Is Offline");
       }
@@ -60,7 +66,11 @@ function App() {
       )}
       {isOpen && (
         <div className="p-10 flex flex-col gap-4 bg-gray-800 text-white rounded-2xl border-1 border-pink-700">
-          <h1>Is Your Friend Online</h1>
+          {users.map((user) => (
+            <h1 key={user}>{user}</h1>
+          ))}
+          {users.length === 0 && <h1>No Users Online</h1>}
+          <h1>Join with Your Friend</h1>
           <input
             className="p-2 rounded-2xl border-2 "
             type="email"
@@ -72,14 +82,19 @@ function App() {
             className="p-2 rounded-2xl bg-blue-600"
             onClick={() => {
               if (toPhone) {
-                socket.emit("isOnline", toPhone);
+                socket.emit("isOnline", { toPhone, userPhone });
               } else {
                 alert("Please Enter Your Friend Phone Number");
               }
             }}
           >
-            Check
+            Check and Join
           </button>
+        </div>
+      )}
+      {isChatBoxOpen && (
+        <div className="p-10 flex flex-col gap-4 bg-gray-800 text-white rounded-2xl border-1 border-pink-700">
+          <h1>Chat With Your Friend</h1>
           <input
             className="p-2 rounded-2xl border-2 "
             type="text"
