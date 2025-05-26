@@ -13,4 +13,5 @@ const fun = require('./math.js');
 // console.log(fun.sub(1, 2));
 
 const fruit = require('./foods/akash.js');
+
 console.log(fruit);
