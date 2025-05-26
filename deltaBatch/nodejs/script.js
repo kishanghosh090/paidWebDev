@@ -12,6 +12,6 @@ const fun = require('./math.js');
 // console.log(fun.sum(1, 2));
 // console.log(fun.sub(1, 2));
 
-const fruit = require('./foods/akash.js');
+const fruit = require('./foods');
 
 console.log(fruit);
