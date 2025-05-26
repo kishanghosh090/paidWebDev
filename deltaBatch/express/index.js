@@ -20,6 +20,11 @@ app.get("/search", (req, res, next) => {
     next();
 })
 
+// depriecated in express 4
+// app.get("*", (req, res) => {
+//     res.status(404).send("all is well");
+// })
+
 app.use((req, res) => {
     // console.log(req);
 
