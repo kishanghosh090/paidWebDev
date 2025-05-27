@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <% userDetails.forEach(user=> { %>
+        <h1>Home Page <%= user.name %>
+        </h1>
+        <h3>Age: <%= user.age %>
+        </h3>
+        <h3>City: <%= user.city %>
+        </h3>
+        <% }) %>
+</body>
+
+</html>
