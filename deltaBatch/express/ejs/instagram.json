@@ -1,0 +1,17 @@
+{
+  "cars": {
+    "car1": "Audi",
+    "car2": "Mercedes",
+    "car3": "BMW"
+  },
+  "cats": {
+    "cat1": "Persian",
+    "cat2": "Persian",
+    "cat3": "Persian"
+  },
+  "dogs": {
+    "dog1": "German Shepherd",
+    "dog2": "German Shepherd",
+    "dog3": "German Shepherd"
+  }
+}

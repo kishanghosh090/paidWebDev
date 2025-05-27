@@ -1,5 +1,6 @@
 import express from "express"
-import path from "path"
+// import path from "path"
+// import data from "./instagram.json"
 const app = express()
 const PORT = 8080
 
@@ -23,5 +24,15 @@ app.get("/", (req, res) => {
     })
 })
 
+app.get("/ig/:username", (req, res) => {
+    res.render("insta.ejs", {
+        username: req.params.username
+    })
+})
+
+// app.get("/ig/:username", (req, res) => {
+//     const { username } = req.params
+//     res.render("insta.ejs", { data: data[username] })
+// })
 
 app.listen(PORT, () => console.log(`Server running on port http://localhost:${PORT}`))
