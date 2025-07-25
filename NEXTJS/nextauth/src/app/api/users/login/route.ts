@@ -1,6 +1,6 @@
 import { connectToDB } from "@/dbConfig/dbConfig";
 import { User } from "@/models/userModel";
-import { error } from "console";
+
 import { NextResponse, NextRequest } from "next/server";
 
 connectToDB();
