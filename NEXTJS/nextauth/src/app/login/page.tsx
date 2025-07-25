@@ -18,8 +18,8 @@ export default function LoginPage() {
       const response = await axios.post("/api/users/login", formData);
       console.log("Login successful", response.data);
       router.push("/profile");
-    } catch (error: any) {
-      console.log("Login failed", error.response.data);
+    } catch (error: unknown) {
+      console.log("Login failed");
     } finally {
       setIsLoading(false);
     }
@@ -105,7 +105,7 @@ export default function LoginPage() {
 
               <div className="text-center">
                 <p className="text-sm text-gray-600">
-                  Have't an account?{" "}
+                  Have not an account?{" "}
                   <button
                     type="button"
                     onClick={() => router.push("/signup")}

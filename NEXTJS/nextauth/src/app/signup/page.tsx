@@ -10,7 +10,7 @@ export default function SignupPage() {
     email: "",
     password: "",
   });
-  const [errors, setErrors] = useState({});
+  // const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async () => {
@@ -19,9 +19,9 @@ export default function SignupPage() {
       const response = await axios.post("/api/users/signup", formData);
       console.log("Signup successful", response.data);
       router.push("/login");
-    } catch (error: any) {
-      console.log("Signup failed", error.response.data);
-      setErrors(error.response.data);
+    } catch (error: unknown) {
+      console.log("Signup failed");
+      // setErrors(error.response.data);
     } finally {
       setIsLoading(false);
     }

@@ -2,11 +2,11 @@ import { connectToDB } from "@/dbConfig/dbConfig";
 import { getDataFromToken } from "@/helpers/getDataFromToken";
 
 import { User } from "@/models/userModel";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 connectToDB();
 
-export async function GET(request: NextResponse) {
+export async function GET(request: NextRequest) {
   try {
     const userId = await getDataFromToken(request);
     console.log(userId);

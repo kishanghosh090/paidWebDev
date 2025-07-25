@@ -14,7 +14,7 @@ export async function GET() {
       expires: new Date(0),
     });
     return response;
-  } catch (error) {
+  } catch (error: unknown) {
     return NextResponse.json(
       { error: "something went wrong" },
       { status: 500 }

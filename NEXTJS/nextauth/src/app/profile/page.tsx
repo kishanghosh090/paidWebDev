@@ -1,8 +1,8 @@
 "use client";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-export default function profilePage() {
+import { JSX, useEffect, useState } from "react";
+export default function ProfilePage(): JSX.Element {
   const router = useRouter();
   const [user, setUser] = useState<{ username: string; email: string }>({
     username: "",
