@@ -1,7 +1,6 @@
 import { connectToDB } from "@/dbConfig/dbConfig";
 import { sendEmail } from "@/helpers/mailer";
 import { User } from "@/models/userModel";
-import { error } from "console";
 import { NextResponse, NextRequest } from "next/server";
 
 connectToDB();
