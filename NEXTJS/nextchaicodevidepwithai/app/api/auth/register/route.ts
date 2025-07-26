@@ -22,7 +22,10 @@ export async function POST(request: NextRequest) {
     }
 
     const user = await User.create({ name, email, password });
-    return NextResponse.json({ user });
+    return NextResponse.json({
+      message: "User created successfully",
+      user,
+    });
   } catch (error) {
     console.log(error);
     NextResponse.json({ error: error }, { status: 500 });
