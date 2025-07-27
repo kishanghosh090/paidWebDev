@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/nextjs": "^6.27.1",
     "cloudinary": "^2.7.0",
     "daisyui": "^5.0.47",
     "next": "15.4.4",
