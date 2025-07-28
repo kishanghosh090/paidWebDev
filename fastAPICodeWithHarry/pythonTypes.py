@@ -1,5 +1,5 @@
 
-def add(fname: str = "John",lname: str = "Doe") -> str:
+def add(fname: str,lname: str ) -> str:
     return fname.upper() + " " + lname
 
 
