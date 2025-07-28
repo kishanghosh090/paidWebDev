@@ -3,6 +3,7 @@ from typing import Union
 from fastapi import FastAPI
 
 app = FastAPI()
+print("{app} is running")
 
 
 @app.get("/")
