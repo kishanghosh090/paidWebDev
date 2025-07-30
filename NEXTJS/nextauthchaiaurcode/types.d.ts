@@ -5,3 +5,13 @@ declare global {
     }
   }
 }
+
+// declare jwt
+declare module "next-auth" {
+  interface JWT {
+    _id: string;
+    email: string;
+  }
+}
+
+export {};
