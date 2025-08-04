@@ -1,15 +1,21 @@
-#use an official image of Node.js runtime
-FROM node:22-alpine
+# --- stage 1 --- build stage
 
-# set working dir
+FROM node:22-alpine AS builder
+
+
 WORKDIR /app
 
 COPY package*.json ./
 
-#install dependencies
-RUN npm install
+RUN npm install 
 
 COPY . .
-ENV PORT=3000
 
+# --- stage 2 --- production stage
+
+FROM node:22-alpine
+WORKDIR /app
+COPY --from=builder /app /app
+
+EXPOSE 3000
 CMD [ "npm","run","start" ]
