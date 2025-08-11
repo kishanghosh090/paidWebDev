@@ -58,6 +58,8 @@ const userSchema = new Schema(
     }, { timestamps: true }
 )
 
+
+// encrypt password
 userSchema.pre("save", async function (next) {
     if (!this.isModified("password")) {
         next()
@@ -66,4 +68,10 @@ userSchema.pre("save", async function (next) {
     next()
 })
 
+// is password correct
+userSchema.methods.isPasswordCorrect = function (password) {
+    return bcrypt.compare(password, this.password)
+}
+
+// export
 export const User = mongoose.model("user", userSchema)
