@@ -1,6 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken"
+import crypto from "crypto"
 
 const userSchema = new Schema(
     {
@@ -96,5 +97,12 @@ userSchema.methods.generateRefreshToken = function () {
     )
 }
 
+
+userSchema.methods.generateTempToken = async function () {
+    const unHashedToken = await crypto.randomBytes(20).toString("hex")
+    const hashedToken = crypto.createHash("sha256").update(unHashedToken).digest("hex")
+    const tokenExpiry = Date.now() + (10 * 60 * 3600)
+    return { unHashedToken, hashedToken, tokenExpiry }
+}
 // export
 export const User = mongoose.model("user", userSchema)
