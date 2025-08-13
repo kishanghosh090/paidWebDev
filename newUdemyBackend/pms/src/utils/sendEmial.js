@@ -4,32 +4,43 @@ import Mailgen from "mailgen";
 import { ApiError } from "./ApiError.js"
 
 const sendEmail = async (options) => {
-    const mailGenerator = new Mailgen({
-        theme: "default",
-        product: {
-            name: "PMS",
-            link: "https://pms.com"
-        },
+    console.log(options);
 
-    });
-    const emailTextual = mailGenerator.generatePlaintext(options.mailgenContent);
-    const emailHtml = mailGenerator.generate(options.mailgenContent);
     try {
-        const sendEmail = await transport.sendMail({
-            from: "pms.com",
-            to: options.email,
-            subject: options.subject,
-            text: emailTextual,
-            html: emailHtml
-        })
-        console.log("email sent successfully");
-        return sendEmail
+        const mailGenerator = new Mailgen({
+            theme: "default",
+            product: {
+                name: "PMS",
+                link: "https://pms.com"
+            },
+
+        });
+        const emailTextual = mailGenerator.generatePlaintext(options.mailgenContent);
+        const emailHtml = mailGenerator.generate(options.mailgenContent);
+        console.log(`${emailHtml}, ${emailTextual}`);
+
+        try {
+            const sendEmail = await transport.sendMail({
+                from: "pms.com",
+                to: options?.email,
+                subject: options.subject,
+                text: `${emailTextual}`,
+                html: `${emailHtml}`
+            })
+            console.log("email sent successfully");
+            return sendEmail
+        } catch (error) {
+            console.log(error);
+
+            throw new ApiError(500, "email not sent");
+        }
     } catch (error) {
-        return new ApiError(500, "email not sent");
+        throw new ApiError(500, error.message || "problem occur in sending email")
     }
 
 }
 
+// Looking to send emails in production? Check out our Email API/SMTP product!
 var transport = nodemailer.createTransport({
     host: "sandbox.smtp.mailtrap.io",
     port: 2525,
@@ -38,5 +49,4 @@ var transport = nodemailer.createTransport({
         pass: "2de69d285871a7"
     }
 });
-
 export { sendEmail }

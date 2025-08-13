@@ -15,6 +15,7 @@ const userSchema = new Schema(
                 localPath: ""
             }
         },
+
         username: {
             type: String,
             required: [true, "User name is required"],
@@ -23,7 +24,7 @@ const userSchema = new Schema(
             trim: true,
             index: true,
         },
-        username: {
+        email: {
             type: String,
             required: [true, "Email is required"],
             unique: true,

@@ -21,7 +21,6 @@ const generateAccessAndRefreshToken = async (userId) => {
 }
 
 const registerUser = async (req, res) => {
-
     try {
         const { email, username, password, role } = req.body
 
@@ -69,7 +68,7 @@ const registerUser = async (req, res) => {
 
     } catch (error) {
         console.log(error);
-        return new ApiError(400, "error when registering user")
+        throw new ApiError(400, "error when registering user")
 
     }
 }
