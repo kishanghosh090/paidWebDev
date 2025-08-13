@@ -1,5 +1,5 @@
 import nodemailer from "nodemailer";
-import { emailCreateForVerifyAccount, forgotPasswordEmail } from "./mail.js"
+
 import Mailgen from "mailgen";
 import { ApiError } from "./ApiError.js"
 

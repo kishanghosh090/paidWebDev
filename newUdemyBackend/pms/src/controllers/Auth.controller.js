@@ -1,9 +1,9 @@
 import { User } from "../models/User.models.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { ApiError } from "../utils/ApiError.js";
-import { sendEmail } from "../utils/sendEmail.js";
+import { sendEmail } from "../utils/sendEmial.js";
 
-import { emailCreateForVerifyAccount, forgotPasswordEmail } from "./mail.js"
+import { emailCreateForVerifyAccount, forgotPasswordEmail } from "../utils/mail.js"
 const generateAccessAndRefreshToken = async (userId) => {
     try {
         const user = await User.findById(userId)
@@ -74,3 +74,4 @@ const registerUser = async (req, res) => {
     }
 }
 
+export { registerUser }
