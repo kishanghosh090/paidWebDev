@@ -1,6 +1,6 @@
 import { Router } from "express"
 
-import { registerUser } from "../controllers/Auth.controller.js"
+import { loginUser, registerUser } from "../controllers/Auth.controller.js"
 import { validate } from "../middlewares/validator.middleare.js";
 import { userRegisterValidator } from "../validators/index.js"
 
@@ -12,5 +12,7 @@ router.route("/register").post(
     validate,
     registerUser
 );
+
+router.route("/login").post(loginUser)
 
 export default router

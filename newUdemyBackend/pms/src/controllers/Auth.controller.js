@@ -73,4 +73,60 @@ const registerUser = async (req, res) => {
     }
 }
 
-export { registerUser }
+const loginUser = async (req, res) => {
+    try {
+        const { email, password, username } = req.body
+
+        if ((!username && !email) || !password) {
+            throw new ApiError(400, "username or email is required")
+        }
+
+
+        const user = await User.findOne({
+            $or: [{ username }, { email }]
+        })
+        if (!user) {
+            throw new ApiError(400, "user does not exist")
+        }
+
+        if (!user.isPasswordCorrect(password)) {
+            throw new ApiError(400, "password is incorrect")
+        }
+
+
+        const { accessToken, refreshToken } = await generateAccessAndRefreshToken(user._id)
+
+        const loggedInUser = await User.findById(user._id).select(
+            "-password -refreshToken -emailVerificationToken -emailVerificationExpiry"
+        )
+
+        const options = {
+            httpOnly: true,
+            secure: true
+        }
+
+
+        return res
+            .status(201)
+            .cookie("accessToken", accessToken, options)
+            .cookie("refreshToken", refreshToken, options)
+            .json(
+                new ApiResponse(201, {
+                    user: loggedInUser,
+                    accessToken,
+                    refreshToken
+                },
+                    "User loggedin successfully"
+                )
+            )
+    } catch (error) {
+        throw new ApiError(500, error.message || "something went wrong")
+    }
+}
+
+
+
+export {
+    registerUser,
+    loginUser
+}

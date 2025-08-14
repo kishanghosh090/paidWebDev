@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3001;
 connectDB()
     .then(() => {
         app.listen(PORT, () => {
-            console.log(`server is listing at PORT : ${PORT}`);
+            console.log(`server is listing at http://localhost:${PORT}`);
         })
     })
     .catch((error) => {
