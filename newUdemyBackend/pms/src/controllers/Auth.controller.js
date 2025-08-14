@@ -124,9 +124,44 @@ const loginUser = async (req, res) => {
     }
 }
 
+const logoutUser = async (req, res) => {
+    try {
+        const userId = req?.user._id
+        if (!userId) {
+            throw new ApiError(401, "unauthorized user")
+        }
+        await User.findByIdAndUpdate(
+            userId,
+            {
+                $set: {
+                    refreshToken: ""
+                }
+            }, {
+            new: true
+        }
+        )
+
+        const options = {
+            httpOnly: true,
+            secure: true
+        }
+
+        return res
+            .status(201)
+            .clearCookie("accessToken", options)
+            .clearCookie("refreshToken", options)
+            .json(
+                new ApiResponse(201, {}, "user logged out")
+            )
+
+    } catch (error) {
+
+    }
+}
 
 
 export {
     registerUser,
-    loginUser
+    loginUser,
+    logoutUser
 }
