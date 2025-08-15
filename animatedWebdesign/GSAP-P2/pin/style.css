@@ -11,5 +11,27 @@ body {
   height: 100%;
   background-color: #2a2a2a;
   color: #fff;
+  /* overflow-x: hidden; */
+}
+#page1 {
+  height: 100%;
+  width: 100%;
+  background-color: black;
 }
 
+#page2 {
+  height: 100%;
+  width: 100%;
+  background-color: rgb(21, 1, 18);
+  overflow: hidden;
+  text-wrap: balance;
+  padding: 5vw 0;
+}
+#page2 h1 {
+  font-size: 40vw;
+}
+#page3 {
+  height: 100%;
+  width: 100%;
+  background-color: rgb(52, 49, 49);
+}
