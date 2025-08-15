@@ -382,8 +382,15 @@ const restForgotPassword = async (req, res) => {
 
 const changePassword = async (req, res) => {
     try {
-        const { newPassword } = req.body
+        const { newPassword, oldPassword } = req.body
         const user = await User.findById(req.user._id)
+        if (!user) {
+            throw new ApiError(404, "user does not exist")
+        }
+        if (!await user.isPasswordCorrect(oldPassword)) {
+            throw new ApiError(400, "old password is incorrect")
+
+        }
         user.password = newPassword
         await user.save({ validateBeforeSave: false })
         return res
