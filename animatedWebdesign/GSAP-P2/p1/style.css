@@ -29,8 +29,16 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap: 100px;
+  font-size: 50px;
 }
-
+h1 {
+  background-color: yellow;
+}
+h2 {
+  background-color: aquamarine;
+}
 #page3 {
   height: 100%;
   width: 100%;
