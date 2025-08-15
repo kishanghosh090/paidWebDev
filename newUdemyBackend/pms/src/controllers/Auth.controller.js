@@ -307,6 +307,46 @@ const refreshAccessToken = async (req, res) => {
     }
 }
 
+// it is a request sent via email
+const forgotPasswordRequest = async (req, res) => {
+    try {
+        const { email } = req.body
+        const user = await User.findOne({ email })
+        if (!user) {
+            throw new ApiError(404, "user does not exists")
+        }
+
+        const { unHashedToken, hashedToken, tokenExpiry } = await user.generateTempToken()
+
+        user.forgotPasswordToken = hashedToken
+        user.forgotPasswordExpiry = tokenExpiry
+
+        await user.save({ validateBeforeSave: false })
+
+        await sendEmail({
+            email: user?.email,
+            subject: "Fogot password",
+            mailgenContent: forgotPasswordEmail(
+                user.username,
+                `${process.env.FORGOT_PASSWORD_REDIRECT_URL}/${unHashedToken}`
+            )
+        })
+
+        return res
+            .status(201)
+            .json(
+                new ApiResponse(200, {}, "password rest mail has been sent to your Email")
+            )
+    } catch (error) {
+        throw new ApiError(400, "something went worong")
+    }
+
+}
+
+// rest forgot password
+
+const restForgotPassword = async (req, res) => { }
+
 export {
     registerUser,
     loginUser,
@@ -314,5 +354,6 @@ export {
     getCurrentUser,
     verifyEmail,
     resendEmailVerification,
-    refreshAccessToken
+    refreshAccessToken,
+    forgotPasswordRequest
 }
