@@ -344,8 +344,57 @@ const forgotPasswordRequest = async (req, res) => {
 }
 
 // rest forgot password
+const restForgotPassword = async (req, res) => {
+    const { resetToken } = req.params
+    const { newPassword } = req.body
 
-const restForgotPassword = async (req, res) => { }
+    let hashedToken = crypto
+        .createHash("sha256")
+        .update(resetToken)
+        .digest("hex")
+    try {
+        const user = await User.findOne({
+            forgotPasswordToken: hashedToken,
+            forgotPasswordExpiry: { $gt: Date.now() }
+        })
+
+        if (!user) {
+            throw new ApiError(404, "user does not exists")
+        }
+
+        user.password = newPassword
+        user.forgotPasswordToken = undefined
+        user.forgotPasswordExpiry = undefined
+
+        await user.save({ validateBeforeSave: false })
+
+        return res
+            .status(200)
+            .json(
+                new ApiResponse(200, {}, "password has been reset successfully")
+            )
+
+    } catch (error) {
+        throw new ApiError(400, "something went wrong")
+    }
+
+}
+
+const changePassword = async (req, res) => {
+    try {
+        const { newPassword } = req.body
+        const user = await User.findById(req.user._id)
+        user.password = newPassword
+        await user.save({ validateBeforeSave: false })
+        return res
+            .status(200)
+            .json(
+                new ApiResponse(200, {}, "password has been changed successfully")
+            )
+    } catch (error) {
+        throw new ApiError(400, "something went wrong")
+    }
+}
 
 export {
     registerUser,
@@ -355,5 +404,7 @@ export {
     verifyEmail,
     resendEmailVerification,
     refreshAccessToken,
-    forgotPasswordRequest
+    forgotPasswordRequest,
+    restForgotPassword,
+    changePassword
 }
