@@ -2,18 +2,21 @@
   "name": "httpnodejs",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --exec ts-node index.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
-  "dependencies": {
-    "@types/node": "^25.0.3"
-  },
+  "type": "module",
   "devDependencies": {
-    "nodemon": "^3.1.11"
+    "@types/node": "^25.0.3",
+    "nodemon": "^3.1.11",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "ts-node": "^10.9.2"
   }
 }

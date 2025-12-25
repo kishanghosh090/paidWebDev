@@ -1,6 +1,11 @@
-const http = require("http");
+import http, { IncomingMessage, ServerResponse } from "http";
 
-const server = http.createServer(function (req, res) {
+const server = http.createServer(function (
+  req: IncomingMessage,
+  res: ServerResponse<IncomingMessage>
+) {
+  if (req.method == "GET") {
+  }
   res.writeHead(200, { "content-type": "application/json" });
   res.end("thans for visiting");
 });
