@@ -4,6 +4,8 @@ const server = http.createServer(function (
   req: IncomingMessage,
   res: ServerResponse<IncomingMessage>
 ) {
+  console.log(req.headers);
+
   if (req.method == "GET") {
   }
   res.writeHead(200, { "content-type": "application/json" });
