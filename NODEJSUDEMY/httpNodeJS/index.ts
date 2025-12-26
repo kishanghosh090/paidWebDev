@@ -34,9 +34,11 @@ const app = express();
 
 const PORT = 8012;
 
+app.use(express.json());
+
 app.get("/", (req: Request, res: Response) => {
   res.status(201).json({
-    'sec-ch-ua-platform':'',
+    "sec-ch-ua-platform": "",
     msg: "hello from kishna",
   });
 });
