@@ -5,6 +5,7 @@ export const createUser = async (name, email) => {
     "INSERT INTO users (name, email) VALUES (?, ?)",
     [name, email]
   );
+
   return result.insertId;
 };
 
