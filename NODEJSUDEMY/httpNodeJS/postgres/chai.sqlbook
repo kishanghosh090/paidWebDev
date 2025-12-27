@@ -1,0 +1,18 @@
+-- SQLBook: Code
+CREATE DATABASE collage;
+CREATE DATABASE chai_store_db;
+CREATE TABLE chai_store(
+    id INT PRIMARY KEY,
+    chai_name VARCHAR(50) NOT NULL,
+    price INT NOT NULL,
+    isAvailable BOOLEAN NOT NULL
+);
+
+INSERT INTO chai_store(id, chai_name, price, isAvailable)
+VALUES (3, 'ginger', 20, FALSE);
+SELECT * FROM chai_store;
+
+SELECT chai_name AS "chai name", price AS "price" FROM chai_store;
+SELECT * FROM chai_store
+WHERE chai_name = 'ginger';
+
