@@ -9,10 +9,21 @@ const socket = new Server(httpServer, {
   },
 });
 socket.use((socket, next) => {
-  console.log(socket);
+  //   console.log(socket);
+  next();
 });
+
+const map = new Map();
 socket.on("connection", (socket) => {
-  console.log("socket connected");
+  console.log("socket connected", socket.id);
+  map.set(socket.id, socket);
+  socket.emit("messgae", "hello");
+
+  // disconnect event
+  socket.on("disconnect", () => {
+    map.delete(socket.id);
+    console.log("socket disconnected", socket.id);
+  });
 });
 
 // Start the server
