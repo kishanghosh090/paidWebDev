@@ -16,12 +16,18 @@ socket.use((socket, next) => {
 const map = new Map();
 socket.on("connection", (socket) => {
   console.log("socket connected", socket.id);
-  map.set(socket.id, socket);
+  if (!map.get(socket.client.id)) {
+    map.set(socket.client.id, socket.id);
+  }
+  console.log(map);
+
   socket.emit("messgae", "hello");
 
   // disconnect event
   socket.on("disconnect", () => {
     map.delete(socket.id);
+    console.log(map);
+
     console.log("socket disconnected", socket.id);
   });
 });
