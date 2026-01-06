@@ -5,6 +5,7 @@ async function getAllUsers() {
   const users = await db.select().from(usersTable);
   console.log(users);
 }
+
 async function createUser({
   name,
   email,
