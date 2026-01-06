@@ -1,10 +1,11 @@
-import { db } from "./db/index.ts";
-import { usersTable } from "./db/schema.ts";
+import { db } from "./db/index";
+import { usersTable } from "./db/schema";
 
 async function getAllUsers() {
   const users = await db.select().from(usersTable);
   console.log(users);
 }
+
 
 async function createUser({
   name,
