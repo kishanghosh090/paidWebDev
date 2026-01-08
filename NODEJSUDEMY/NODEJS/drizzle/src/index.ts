@@ -22,5 +22,5 @@ async function createUser({
     email,
   });
 }
-// createUser({ name: "kishan", email: "k@gmail.com", age: 20 });
-getAllUsers();
+createUser({ name: "kishan", email: "k@gmail.com", age: 20 });
+// getAllUsers();
