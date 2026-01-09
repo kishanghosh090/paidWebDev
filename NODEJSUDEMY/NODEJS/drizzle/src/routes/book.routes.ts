@@ -24,16 +24,19 @@ router.get(
     }
   }
 );
+
 router.get(
   "/searchUser",
   async (req: Request, res: Response, next: NextFunction) => {
     const search = req.query.search;
-    // console.log(search);
+    console.log(search);
     if (search) {
       const books = await db
         .select()
         .from(usersTable)
-        .where(ilike(usersTable.name, `%${search}%`));
+        .where(
+          sql`to_tsvector('english', ${usersTable.name}) @@ to_tsquery('english', ${search})`
+        );
 
       console.log(books);
 

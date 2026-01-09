@@ -1,3 +1,4 @@
+import { sql } from "drizzle-orm";
 import { index, integer, pgTable, varchar } from "drizzle-orm/pg-core";
 
 export const usersTable = pgTable(
@@ -10,7 +11,7 @@ export const usersTable = pgTable(
     age: integer().notNull(),
     email: varchar({ length: 255 }).notNull().unique(),
   },
-  (table) => ({
-    searchIndexOnName: index("name_search_index").on(table.name),
-  })
+  (table) => [
+    index('title_search_index').using('gin', sql`to_tsvector('english', ${table.name})`),
+  ]
 );

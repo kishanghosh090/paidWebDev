@@ -37,5 +37,10 @@ async function createUser({
     email,
   });
 }
-// createUser({ name: "karan", email: "kkkk@gmal.com", age: 20 });
+// for (let i = 1; i < 10000; i++) {
+//   createUser({ name: `k${i}shal`, email: `kk${i}kk@gmal.com`, age: 20 }).then(()=>{
+//     console.log("added");
+    
+//   });
+// }
 // // getAllUsers();
