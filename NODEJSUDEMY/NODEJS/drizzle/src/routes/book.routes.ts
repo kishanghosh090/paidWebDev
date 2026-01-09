@@ -1,7 +1,7 @@
 import express, { NextFunction, Request, Response } from "express";
 import { usersTable } from "../db/schema";
 import { db } from "../db";
-import { sql } from "drizzle-orm";
+import { sql, ilike } from "drizzle-orm";
 
 const router = express.Router();
 
@@ -19,7 +19,27 @@ router.get(
       console.log(userById);
 
       return res.json(userById);
-    } catch (error) {}
+    } catch (error) {
+      return res.json({ msg: "error occured please try again later" });
+    }
+  }
+);
+router.get(
+  "/searchUser",
+  async (req: Request, res: Response, next: NextFunction) => {
+    const search = req.query.search;
+    // console.log(search);
+    if (search) {
+      const books = await db
+        .select()
+        .from(usersTable)
+        .where(ilike(usersTable.name, `%${search}%`));
+
+      console.log(books);
+
+      return res.json(books);
+    }
+    return res.json({});
   }
 );
 
