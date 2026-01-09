@@ -4,6 +4,6 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_PASSWORD: 8080
-      POSTGRES_USER: user
       POSTGRES_DB: bookStore
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: 8080
