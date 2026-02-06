@@ -22,7 +22,7 @@ export default function Auth() {
   const [password, setPassword] = React.useState("");
 
   return (
-    <div className="h-[100vh] justify-center flex items-center">
+    <div className="h-[100vh] justify-center flex justify-center items-center">
       <ThemeProvider theme={theme}>
         <Container component="main" maxWidth="sm">
           <CssBaseline />
