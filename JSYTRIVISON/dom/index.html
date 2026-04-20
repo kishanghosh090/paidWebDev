@@ -27,11 +27,20 @@
   div.id = "bg"
   // div.className = "bg"
   // console.log(div);
+  // document selector-----
   let div1 = document.getElementById("bg")
   console.log(div1.getAttribute("class"));
-  
+  // console.log(Element.apply);
+  // element selector------
+  const elSec = div.querySelector("h1")
+  console.log(elSec);
 
-
+  const arr = [2, 3, 4]
+  arr.forEach(element => {
+    const el = document.createElement("li")
+    el.innerText = element
+    div.appendChild(el)
+  });
 </script>
 
 </html>
