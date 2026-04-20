@@ -1,14 +1,39 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body></body>
-  <script>
-    console.log(document);
-  </script>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    body {
+      height: 100vh;
+      background-color: #212121;
+      color: aliceblue;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-black bg hello">
+    <h1 class="heading">DOM learning on Chai aur code</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis saepe eaque consectetur quaerat deserunt
+      voluptatibus maiores dicta dolor nam eum inventore veniam, nobis omnis nostrum ad reiciendis neque, id ullam.</p>
+  </div>
+</body>
+<script>
+  console.log(document);
+  let div = document.querySelector(".bg-black")
+  div.id = "bg"
+  // div.className = "bg"
+  // console.log(div);
+  let div1 = document.getElementById("bg")
+  console.log(div1.getAttribute("class"));
+  
+
+
+</script>
+
 </html>
 
 <!-- http://127.0.0.1:5500/dom/index.html -->
