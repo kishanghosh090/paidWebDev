@@ -14,3 +14,5 @@ promiseOne
     console.log(await res.json());
   })
   .catch((err) => console.log(err));
+
+const promiseFive = new Promise(function (resolve, reject) {});
