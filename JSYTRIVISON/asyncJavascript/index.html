@@ -14,20 +14,20 @@
 </head>
 
 <body>
-    <h1>Chai aur code</h1>
+    <h1>Chai aur java script</h1>
+    <button id="start">start</button>
     <button id="stop">stop</button>
 </body>
 <script>
 
     const st = setInterval(() => {
-        console.log("kishan rana ghosh");
-
+        console.log("kishan rana ghosh", Date.now());
     }, 1000);
 
     document.querySelector("#stop").addEventListener("click", () => {
         clearInterval(st)
+        console.log("STOPPED");
     })
-
 
 
 </script>
