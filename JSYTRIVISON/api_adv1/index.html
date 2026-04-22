@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+    <style>
+        body {
+            background-color: #212121;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    const xhr = new XMLHttpRequest()
+    // console.log(xhr.readyState);
+    xhr.onreadystatechange = async function () {
+        // console.log(xhr.readyState);
+        if (xhr.readyState == 4) {
+            const res = await JSON.parse(this.responseText)
+            console.log(res.id);
+        }
+    }
+
+    xhr.open('GET', "https://api.github.com/users/kishanghosh090")
+    xhr.send()
+    // console.log(xhr.readyState);
+
+</script>
+
+</html>
