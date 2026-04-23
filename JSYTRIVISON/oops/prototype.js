@@ -41,3 +41,7 @@ console.log(TASupport.isAvailable);
 // modern
 Object.setPrototypeOf(TASupport, User);
 
+String.prototype.trueLength = function () {
+  console.log(`${this.name}`);
+};
+
