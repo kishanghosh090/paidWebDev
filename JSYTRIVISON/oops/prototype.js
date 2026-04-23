@@ -20,4 +20,24 @@ String.prototype.trueLength = function () {
   return this.trim().length;
 };
 
-console.log("helloooo   ".trueLength());
+// console.log("helloooo   ".trueLength());
+
+// inhertitance
+const User = {
+  name: "chai",
+  email: "kishanghsoh09@gmail.com",
+};
+
+const TeachingSupport = {
+  isAvailable: false,
+};
+const TASupport = {
+  makeAssignment: "JS assignment",
+  fullTime: true,
+  __proto__: TeachingSupport,
+};
+console.log(TASupport.isAvailable);
+
+// modern
+Object.setPrototypeOf(TASupport, User);
+
